@@ -50,3 +50,4 @@ Route::get('/reseravationsbyrestaurant/{restaurant_id}', [ReservationTableContro
 Route::post('/login', [LoginController::class, 'login']);
 Route::post('/register', [RegisterController::class, 'register']);
 Route::middleware('auth:sanctum')->post('/logout', [LoginController::class,'logout']);
+Route::get('/reseravationsbyusername/{email}', [ReservationTableController::class,'ReservationsByUsername']);

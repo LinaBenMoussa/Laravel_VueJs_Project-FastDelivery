@@ -14,14 +14,12 @@ class RegisterController extends Controller
     $request->validate([
     'name' => 'required',
     'email' => 'required|email|unique:users,email',
-    'password' => 'required|min:6',
-    'role' => 'required',
-    ]);
+    'password' => 'required|min:6',    ]);
     $user = User::create([
     'name' => $request->name,
     'email' => $request->email,
     'password' => Hash::make($request->password),
-    'role' => $request->role,
+    'role' => 'User',
     ]);
     $token = $user->createToken('token-name')->plainTextToken;
 return response()->json([

@@ -12,6 +12,7 @@ class ReservationTableController extends Controller
      * Display a listing of the reservations.
      *
      * @return \Illuminate\Http\Response
+     * 
      */
     public function ReservationsByRestaurant($restaurant_id)
     {
@@ -19,6 +20,14 @@ class ReservationTableController extends Controller
 
         return response()->json($reservations);
     }
+    
+
+    public function ReservationsByUsername($username)
+    {
+        $reservations = ReservationTable::where('email', $username)->get();
+        return response()->json($reservations);
+    }
+
     public function index()
     {
         $reservations = ReservationTable::all();

@@ -42,6 +42,10 @@
              </router-link>
          </li>
          <li class="nav-item">
+           <router-link class="nav-link active"  to="/secretcode">Secret Code
+             </router-link>
+         </li>
+         <li class="nav-item">
   <router-link class="nav-link active" to="/login">Login
   </router-link>
   </li>

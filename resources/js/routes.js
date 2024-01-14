@@ -4,6 +4,8 @@ import Viewtables from "./components/Table/Viewtables.vue";
 
 import Viewrestaurants from "./components/restaurants/Viewrestaurants.vue";
 import Viewmenus from "./components/menu/Viewmenus.vue";
+import Viewsecretcode from "./components/secretCode.vue";
+
 import Foodsclient from "./components/Foods/Foodsclient.vue";
 import Menusclient from "./components/menu/Menusclient.vue";
 import Restaurantsclient from "./components/restaurants/Restaurantsclient.vue";
@@ -97,5 +99,10 @@ export const routes = [
         name:"Accueil",
         path:"/accueil",
         component:Accueil
+    },
+    {
+        name:"Viewsecretcode",
+        path:"/secretcode",
+        component:Viewsecretcode
     },
 ];
