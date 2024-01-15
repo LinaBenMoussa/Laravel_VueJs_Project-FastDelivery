@@ -97,7 +97,7 @@ export const routes = [
     },
     {
         name:"Accueil",
-        path:"/accueil",
+        path:"/",
         component:Accueil
     },
     {

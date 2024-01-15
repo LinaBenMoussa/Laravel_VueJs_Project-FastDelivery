@@ -1,8 +1,8 @@
 <template>
-  <button type="button" class="btn btn-warning rounded-circle " @click="visible = true">
-    <span style="color: rgb(233, 240, 241)">
+  <button type="button" class="btn btn-outline-success m-2"  @click="visible = true">
+    
       Réserver Table
-    </span>
+   
   </button>
 
   <form>
@@ -36,17 +36,18 @@
         </div><br>
         <div class="row"><br>
           <div class="col-md-12">
-            <button type="submit" class="btn btn-outline-primary" @click="reserveTable()">
+            <button type="submit" class="btn btn-primary m-2" @click="reserveTable()">
        Réserver
+    </button>
+    <button type="button" class="btn btn-secondary" @click="cancel">
+      Annuler
     </button>
     
           </div>
         </div><br>
         <div class="row"><br><br><br>
           <div class="col-md-12">
-            <button type="button" class="btn btn-outline-primary" @click="cancel">
-      Annuler
-    </button>
+            
     
           </div>
         </div>
@@ -183,7 +184,7 @@ const getavailablehours = () => {
   times.value.forEach(t => { 
     t.heures.forEach(h=>{
     console.log("h",h);
-       if (!availableHoursNew.value.includes(h)) {
+       if (!availableHoursNew.value.includes(h.split(':').slice(0, 2).join(':'))) {
         availableHoursNew.value.push(h.split(':').slice(0, 2).join(':'));}})
     
   });

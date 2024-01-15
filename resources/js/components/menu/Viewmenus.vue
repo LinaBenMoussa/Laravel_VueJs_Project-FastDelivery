@@ -76,4 +76,5 @@ if (window.confirm("Etes-vous sûr de vouloir supprimer ?")) {
 .drag{
 margin-top: 100px;
 }
+
 </style>

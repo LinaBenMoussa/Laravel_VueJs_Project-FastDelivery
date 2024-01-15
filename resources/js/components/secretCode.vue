@@ -4,7 +4,7 @@
     <h2> Loading .... </h2>
     </div>
     <div v-else class="py-6">
-    <table class="table table-striped shadow">
+    <table class="table table-warning">
     <thead>
     <tr>
     <th scope="col">Date</th>

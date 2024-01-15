@@ -40,18 +40,25 @@
     import { useRouter } from 'vue-router';
     const router = useRouter()
     let user= {}
-    const handleLogin=async()=> {
-    axios.post('http://localhost:8000/api/login/', user).then((response) => {
- console.log(response)
- if(response.data.user.role == 'admin'){
-    router.push("/dashboard")
- }else {router.push("/accueil")}
- localStorage.setItem('user',response.data.user.name) 
- localStorage.setItem('token',response.data.token) })
- .catch(err => {console.log(err);
- alert(err)
- })
- }
+    const handleLogin = async () => {
+  try {
+    const response = await axios.post('http://localhost:8000/api/login/', user);
+    console.log(response);
+
+    localStorage.setItem('role', response.data.user.role);
+    localStorage.setItem('user', response.data.user.name);
+    localStorage.setItem('token', response.data.token);
+
+    const redirectPath = response.data.user.role === 'admin' ? '/dashboard' : '/';
+
+    // Rafraîchir la page après la redirection
+    router.replace(redirectPath);
+  } catch (err) {
+    console.log(err);
+    alert(err);
+  }
+};
+
  </script>
 <style scoped>
 .marge {

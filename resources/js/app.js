@@ -1,7 +1,7 @@
 import { createApp } from 'vue';
 import { createRouter, createWebHashHistory } from "vue-router";
 import { routes } from "./routes";
-import 'bootswatch/dist/journal/bootstrap.min.css';
+import 'bootswatch/dist/United/bootstrap.min.css';
 import "@fortawesome/fontawesome-free/css/all.css";
 import store from "./store"
 import App from './App.vue'

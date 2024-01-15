@@ -1,7 +1,6 @@
 <template>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-success">
           <div class="container-fluid">
-            <button type="button" class="btn btn-warning   rounded-circle"  @click="visible = true">
+            <button type="button" class="btn btn-warning  rounded-circle m-2"  @click="visible = true">
               <span style="color: rgb(43, 27, 27)">
               <i class="fa-solid fa-square-plus"> </i> 
             </span>
@@ -11,7 +10,6 @@
   
            
           </div>
-  </nav>
      
   
   <form >

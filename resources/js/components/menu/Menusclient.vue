@@ -1,4 +1,5 @@
 <template>
+  <div class="list"> 
     <div v-for="menu in menus">
   <div class="card mb-3" style="max-width: 540px;">
   <div class="row g-0">
@@ -15,7 +16,7 @@
       </div>
     </div>
   </div>
-</div></div>
+</div></div></div>
 </template>
 
 <script setup>
@@ -49,5 +50,8 @@ onMounted(() => {
 
 </script>
 <style scoped>
-
+.list{
+  margin-left: 350px;
+  margin-top: 30px;
+}
 </style>

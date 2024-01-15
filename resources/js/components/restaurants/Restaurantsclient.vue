@@ -1,21 +1,22 @@
 <template>
-    <div v-for="restaurant in restaurants">
+  <div class="list">
+    <div  v-for="restaurant in restaurants">
   <div class="card mb-3" style="max-width: 540px;">
   <div class="row g-0">
     <div class="col-md-4">
-      <img :src="restaurant.image" class="img-fluid rounded-start" alt="...">
+      <img :src="restaurant.logo" class="img-fluid rounded-start" alt="...">
     </div>
     <div class="col-md-8">
       <div class="card-body">
         <h5 class="card-title">{{ restaurant.name }}</h5>
         <p class="card-text">{{ restaurant.description }}</p>
-       
-        <RouterLink :to="{ name: 'Menusclient', params: { id: restaurant.id } }">Show menus</RouterLink>
+      
+        <RouterLink class="btn btn-outline-primary" :to="{ name: 'Menusclient', params: { id: restaurant.id } }">Show menus</RouterLink>
         <Choisirtable :restaurantid="restaurant.id" />
       </div>
     </div>
   </div>
-</div></div>
+</div></div></div>
 </template>
 
 <script setup>
@@ -40,5 +41,8 @@ onMounted(() => {
 });
 </script>
 <style scoped>
-
+.list{
+  margin-left: 350px;
+  margin-top: 30px;
+}
 </style>
