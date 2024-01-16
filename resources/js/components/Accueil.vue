@@ -1,8 +1,6 @@
 <template>
     
     <img src="https://res.cloudinary.com/dqhwmpfm6/image/upload/v1703192049/image/Italien%20Food%21%20%282%29%20%288%29.png.png">
-  <div class="Container">
-    <h1>Restaurants</h1></div>
     
     </template>
     <script>

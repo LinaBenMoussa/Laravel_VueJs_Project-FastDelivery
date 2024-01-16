@@ -47,9 +47,13 @@
 
     localStorage.setItem('role', response.data.user.role);
     localStorage.setItem('user', response.data.user.name);
+    localStorage.setItem('email', response.data.user.email);
+    localStorage.setItem('phone', response.data.user.phone);
+    localStorage.setItem('address', response.data.user.address);
+
     localStorage.setItem('token', response.data.token);
 
-    const redirectPath = response.data.user.role === 'admin' ? '/dashboard' : '/';
+    const redirectPath = response.data.user.role === 'admin' ? '/restaurants' : '/';
 
     // Rafraîchir la page après la redirection
     router.replace(redirectPath);

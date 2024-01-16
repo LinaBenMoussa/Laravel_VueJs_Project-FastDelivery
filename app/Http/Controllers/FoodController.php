@@ -2,8 +2,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Food;
+use App\Models\Menu;
+use App\Models\Restaurant;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Http;
 class FoodController extends Controller
 {
       /**
@@ -54,4 +56,33 @@ return response()->json($foods);
 
         return response()->json(null, 204);
     }
+    
+    public function getFoodDetails($food_id)
+{
+    try {
+        // Fetch food details
+        $food = Food::findOrFail($food_id);
+
+        // Fetch menu details
+        $menu = Menu::findOrFail($food->menu_id);
+
+        // Fetch restaurant details
+        $restaurant = Restaurant::findOrFail($menu->restaurant_id);
+
+        // Prepare the response
+        $result = [
+            'product' => $food,
+            'menu' => $menu,
+            'restaurant' => $restaurant,
+        ];
+
+        return response()->json($result, 200);
+    } catch (\Exception $e) {
+        // Handle other errors
+
+        return response()->json(['error' => 'Internal Server Error'], 500);
+    }
 }
+}
+
+

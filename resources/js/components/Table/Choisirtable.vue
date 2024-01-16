@@ -69,7 +69,8 @@ import Calendar from 'primevue/calendar';
 import { ref, onMounted } from "vue";
 import api from '../config/api.js';
 import Dialog from 'primevue/dialog';
-
+import { useRouter } from 'vue-router';
+const router = useRouter()
 
 const visible = ref(false);
 const props = defineProps(['restaurantid']);
@@ -128,8 +129,9 @@ idtables.value = tables.value
  
 if (idtables.value.length > 0) {
   for (const id of idtables.value) { 
+    console.log("id",id)
     // Pour chaque id de table, vérifiez les heures non disponibles dans la liste des réservations
-    const reservedHoursForTable = [];
+    let reservedHoursForTable = [];
 
     for (const res of restaurantReservations.value) {
       console.log("tableei id",res.table_id)
@@ -139,6 +141,7 @@ if (idtables.value.length > 0) {
 
       if (res.table_id === id && res.date === reservation.value.date) {
         reservedHoursForTable.push(res.time);
+        console.log("heure reservee",reservedHoursForTable)
       }
     }console.log("les dates reserves pour les tables",reservedHoursForTable)
 
@@ -150,6 +153,7 @@ if (idtables.value.length > 0) {
       heures: availableHoursForTable
     
     });
+    console.log("availableHoursForTable",availableHoursForTable)
     
 
   }console.log("times value",times.value);
@@ -188,7 +192,7 @@ const getavailablehours = () => {
         availableHoursNew.value.push(h.split(':').slice(0, 2).join(':'));}})
     
   });
-  console.log("formatted",reservation.date);
+  console.log("formatted",availableHoursNew.value);
 
   reservation.restaurant_id=props.restaurantid;
 
@@ -204,17 +208,23 @@ const reserveTable=async()=>{
   reservation.value.secretCode = generateSecretCode();
   console.log(reservation.value.secretCode);
   times.value.forEach(t=>{t.heures.forEach(h=>{if((h.split(':').slice(0, 2).join(':'))===reservation.value.time){
-    console.log("la condition est fausse")
+    console.log("la condition est fausse",t.idTable)
     reservation.value.table_id=t.idTable}})})
   console.log("reservation",reservation.value)
   await api.post('/api/reservationtable', reservation.value).then(() => {
+    times.value = [{
+  heures: [],
+  idTable: null,
+}]; availableHoursNew.value = [];
     window.alert('Réservation confirmée avec succès! Vous pouvez retrouver votre secret code dans la section "Codes Secrets" de la page.');
+    
       visible.value = false;
+     
     })
     .catch(error => {
       console.error('Erreur lors de la réservation :', error);
     });
-
+    router.replace("/");
 }
 const cancel = () => {
   visible.value = false;

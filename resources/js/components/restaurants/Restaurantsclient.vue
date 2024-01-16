@@ -4,7 +4,7 @@
   <div class="card mb-3" style="max-width: 540px;">
   <div class="row g-0">
     <div class="col-md-4">
-      <img :src="restaurant.logo" class="img-fluid rounded-start" alt="...">
+      <img :src="restaurant.logo" class="img" alt="...">
     </div>
     <div class="col-md-8">
       <div class="card-body">
@@ -41,6 +41,10 @@ onMounted(() => {
 });
 </script>
 <style scoped>
+.img{
+  height: 182px;
+  width:175px
+}
 .list{
   margin-left: 350px;
   margin-top: 30px;

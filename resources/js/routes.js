@@ -5,6 +5,8 @@ import Viewtables from "./components/Table/Viewtables.vue";
 import Viewrestaurants from "./components/restaurants/Viewrestaurants.vue";
 import Viewmenus from "./components/menu/Viewmenus.vue";
 import Viewsecretcode from "./components/secretCode.vue";
+import Viewcommandes from "./components/commandes/Viewcommande.vue";
+import Viewreservations from "./components/Reservation/Viewreservation.vue";
 
 import Foodsclient from "./components/Foods/Foodsclient.vue";
 import Menusclient from "./components/menu/Menusclient.vue";
@@ -52,6 +54,11 @@ export const routes = [
     name:"Viewrestaurants",
     path:"/restaurants",
     component:Viewrestaurants
+},
+{
+    name:"Viewreservations",
+    path:"/reservations",
+    component:Viewreservations
 },
 {
     name:"Viewmenus",
@@ -104,5 +111,10 @@ export const routes = [
         name:"Viewsecretcode",
         path:"/secretcode",
         component:Viewsecretcode
+    },
+    {
+        name:"Viewcommandes",
+        path:"/commandes",
+        component:Viewcommandes
     },
 ];

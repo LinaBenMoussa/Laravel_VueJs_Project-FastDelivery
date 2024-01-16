@@ -4,7 +4,7 @@
   <div class="card mb-3" style="max-width: 540px;">
   <div class="row g-0">
     <div class="col-md-4">
-      <img :src="food.image" class="img-fluid rounded-start" alt="...">
+      <img :src="food.image" class="img" alt="...">
     </div>
     <div class="col-md-8">
       <div class="card-body">
@@ -12,12 +12,14 @@
         <p class="card-text">{{ food.description }}</p>
         <p class="card-text"><small class="text-body-secondary">{{ food.price }} TL</small></p>
         <div class="cart-product-quantity">
-                    <button @click="minus(food)" >
+          <tr>
+                    <td><button @click="minus(food)" >
                       -	
-                    </button>
-                    <div class="count"><strong> {{ quantities[food.id] }} </strong></div>
-                    <button @click="add(food)">+</button>
-        </div>
+                    </button></td>
+                    <td><div class="count"><strong> {{ quantities[food.id] }} </strong></div></td>
+                   <td> <button @click="add(food)">+</button></td>
+                  </tr>
+        </div><br>
         <button class="btn btn-outline-primary" @click="addToCart(food)">Add to Cart</button>
 
       </div>
@@ -77,5 +79,9 @@ const minus = (food) => {
 .list{
   margin-left: 350px;
   margin-top: 30px;
+}
+.img{
+  height: 250px;
+  width:175px
 }
 </style>

@@ -26,9 +26,7 @@
            <router-link v-if="isAdmin()" class="nav-link active"  to="/foods">Foods
              </router-link>
          </li>
-         <li class="nav-item">
-           <router-link v-if="isUser()" to="/shopping" class="nav-item nav-link"> Shopping Cart </router-link>  
-         </li>
+         
          
         
          <li class="nav-item">
@@ -40,6 +38,14 @@
              </router-link>
          </li>
          <li class="nav-item">
+           <router-link v-if="isAdmin()" class="nav-link active"  to="/commandes">Commandes
+             </router-link>
+         </li>
+         <li class="nav-item">
+           <router-link v-if="isAdmin()"  class="nav-link active"  to="/reservations">reservations
+             </router-link>
+         </li>
+         <li class="nav-item">
   <router-link v-if="isVisitor()" class="nav-link active" to="/login">Login
   </router-link>
   </li>
@@ -47,15 +53,12 @@
   <router-link v-if="isVisitor()" class="nav-link active" to="/register">Register
   </router-link>
   </li>
+  
   <li v-if="isUser() || isAdmin()" class="nav-item">
   <button  @click="logout">Logout</button>
   </li>
-         
        </ul>
-       <form class="d-flex">
-         <input class="form-control me-sm-2" type="search" placeholder="Search">
-         <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
-       </form>
+       
        <ul v-if="isUser() || isVisitor()" class="navbar-nav ms-auto mb-2 mb-lg-0">
                      <li class="nav-item me-3">
                      <router-link class="nav-link position-relative" :class="$route.name == 'Cart'? 'active':''" aria-current="page" :to="{ name: 'Cart' }">
@@ -66,9 +69,11 @@
                          </span>
                      </router-link>
      </li>
+    
      <li class="nav-item">
   <span class="nav-link active">Bonjour, {{ getUsername() }}</span>
 </li>
+
  </ul>
  
      </div>
@@ -111,11 +116,9 @@ const isAdmin = () => {
     return role === 'admin';}
 const isUser= () => {
     const role = localStorage.getItem('role');
-    console.log(role)
     return role === 'user';}
     const isVisitor= () => {
     const user = localStorage.getItem('user');
-    console.log("new",user)
     return user === null;}
     const   clearCart=()=> { 
         store.commit("Foodstore/clearCart");

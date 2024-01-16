@@ -13,7 +13,7 @@
        v-model:visible="visible"   
    >
  <div class="row">
- <div class="col-md-6">.
+ <div class="col-md-6">
      <label for="name" class="form-label">Nom</label>
  <input type="text" class="form-control" id="name" v-model="food.name">
 
@@ -27,7 +27,7 @@
              
 
 <div class="row">
- <div class="col-md-6">.
+ <div class="col-md-6">
      <label for="price" class="form-label">Prix</label>
  <input type="text" class="form-control" id="price" v-model="food.prix">
 

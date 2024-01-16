@@ -67,8 +67,8 @@ onMounted(() => {
 const deleterestaurant=async(id)=>{
 if (window.confirm("Etes-vous sûr de vouloir supprimer ?")) {
  try {
-     await api.delete(`/api/restaurants/${id}`)
-     getrestaurants()
+     await api.delete(`/api/restaurants/${id}`).then(
+     location.reload())
 } catch (error) {
  console.log(error)
      

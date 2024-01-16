@@ -9,8 +9,23 @@
     <div class="form-group row">
     <label for="name" class="col-sm-4 col-formlabel text-md-right">Name</label>
     <div class="col-md-6">
-    <input id="name" type="text" class="formcontrol" v-model="user.name" required
-    autofocus autocomplete="off"> </div>
+    <input id="name" type="text" class="form-control" v-model="user.name" required
+    autofocus autocomplete="off"> 
+    </div>
+    </div>
+    <div class="form-group row">
+    <label for="phone" class="col-sm-4 col-formlabel text-md-right">Phone</label>
+    <div class="col-md-6">
+    <input id="phone" type="text" class="form-control" v-model="user.phone" required
+    autofocus autocomplete="off"> 
+    </div>
+    </div>
+    <div class="form-group row">
+    <label for="address" class="col-sm-4 col-formlabel text-md-right">address</label>
+    <div class="col-md-6">
+    <input id="address" type="text" class="form-control" v-model="user.address" required
+    autofocus autocomplete="off"> 
+    </div>
     </div>
     <div class="form-group row">
     <label for="email" class="col-sm-4 col-formlabel text-md-right">E-Mail Address</label>
@@ -55,7 +70,7 @@
    
    
     const handleSubmit=async()=> {
-   console.log(user)
+   console.log(user.value)
     axios.post('http://localhost:8000/api/register/', user)
     .then(response => {
     console.log(response)

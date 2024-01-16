@@ -6,7 +6,7 @@
       <br/>
       <div class="card-text">
         <div class="form-group">
-         <input type="email" class="form-control" placeholder="email" v-model="email" />
+          <input v-model="email" type="email" class="form-control" placeholder="email" />
        </div>
        <br/>
       </div>
@@ -26,15 +26,16 @@
   import api from "../config/api.js";
   
   import { useRouter } from 'vue-router';
+  import { v4 as uuidv4 } from 'uuid';
   
   const router = useRouter();
-  
+  const panierNumber = uuidv4();
   const stripePromise = loadStripe('pk_test_51ORyu3IlM2uMduSNOf47gF3KNdEYl9u5QBqQTh1iDH4BUXo4WLgUbKTKK0TQDFaEcKdxWngj1A8MpuqTQq5mgjkw00umx6PHz7');
   const stripe = ref(null);
   let cardElement; // Déclarer cardElement comme variable globale
   let amount=ref(0);
   
-  let email=ref("");
+  const email = ref(localStorage.getItem("email") || '');;
   
   onMounted(async () => {
   
@@ -62,10 +63,12 @@
       });
   
       if (response.data.message) {
+        addcommandes()
         console.log(response.data.message);
         // Le paiement est réussi
         alert(response.data.message);
         //Vider le cart
+        
         store.commit('Foodstore/clearCart')
         //Redirection
         router.push('/shopping')
@@ -75,6 +78,32 @@
     }
   
   };
+  const addcommandes=async()=>{
+    console.log("avant for")
+    for(let c of store.state.Foodstore.cart){
+
+      
+      let productid=c.product.id
+      let qty=c.qty
+      console.log("dans for",c.qty)
+      console.log("apres for :",{
+        food_id:productid,
+        qty:qty,
+        email:localStorage.getItem('email'),
+        phone:localStorage.getItem('phone'),
+        address:localStorage.getItem('address'),
+        panier: panierNumber,
+      })
+      await api.post('/api/commandes', {
+        food_id:productid,
+        qty:qty,
+        email:localStorage.getItem('email'),
+        phone:localStorage.getItem('phone'),
+        address:localStorage.getItem('address'),
+        panier: panierNumber,
+      });
+          }
+  }
   </script>
   
   
